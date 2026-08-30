@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4 {
+    font-family: theme("fontFamily.display");
+    letter-spacing: -0.01em;
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.gold.500");
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-royal-600;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-[3px] w-[3px] rounded-full bg-current;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-royal-600 text-white shadow-card hover:bg-royal-700 hover:-translate-y-0.5 hover:shadow-elevated active:translate-y-0;
+  }
+  .btn-gold {
+    @apply btn bg-gradient-to-b from-gold-400 to-gold-500 text-navy-950 shadow-card hover:from-gold-300 hover:to-gold-400 hover:-translate-y-0.5 hover:shadow-elevated active:translate-y-0;
+  }
+  .btn-outline {
+    @apply btn border border-navy-800/15 text-navy-900 bg-white hover:border-royal-600 hover:text-royal-700 hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-ghost-light {
+    @apply btn border border-white/25 text-white hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .card {
+    @apply rounded-xl border border-navy-900/8 bg-white shadow-card transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-elevated hover:border-royal-600/20;
+  }
+  .input {
+    @apply w-full rounded-md border border-navy-900/15 bg-white px-3.5 py-2.5 text-sm text-navy-900 placeholder:text-mist-400 focus:border-royal-600 focus:ring-1 focus:ring-royal-600 outline-none transition;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-navy-800;
+  }
+  .field-error {
+    @apply mt-1 text-xs font-medium text-rose-600;
+  }
+  .section {
+    @apply mx-auto max-w-6xl px-6 lg:px-8;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .stat-number {
+    @apply font-display text-3xl font-semibold text-navy-950 sm:text-4xl;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-radial-glow {
+    background: radial-gradient(circle at center, var(--tw-gradient-from) 0%, transparent 70%);
+  }
+}
